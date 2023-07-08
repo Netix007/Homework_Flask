@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>Students</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Group</th>
+            <th scope="col">Email</th>
+            <th scope="col">Ratings</th>
+        </tr>
+    </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <th valign="top">{{ student.id }}</th>
+                <th valign="top">{{ student.first_name }}</th>
+                <th valign="top">{{ student.last_name }}</th>
+                <th valign="top">{{ student.group }}</th>
+                <th valign="top">{{ student.email }}</th>
+                <th valign="top" align="left">
+                    {% for item in student.ratings %}
+                    <span>{{ item }} <br></span>
+                    {% endfor %}
+                </th>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% endblock %}
